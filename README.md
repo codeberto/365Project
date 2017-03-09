@@ -1,6 +1,6 @@
 # 365Project
 
-###Screens
+##Screens
 ####Main page
 - 2 buttons (new workout, view workout)
 
