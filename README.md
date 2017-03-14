@@ -1,12 +1,12 @@
 # 365Project
 
-##Screens
+## Screens
 
-####Main page
+#### Main page
 - 2 buttons (new workout, view workout)
 
 
-####New Workout
+#### New Workout
 - text fields for name, date, duration
 - combo box for workout type
 
@@ -15,11 +15,11 @@
 	- will show all workout entries related to the 'name' field
 	- sorted by most recent
 
-####View Workout
+#### View Workout
 - same layout as New workout, but used for creating a query instead
 - clicking search button will lead create the query and then lead to the result page
 
-####Result Page
+#### Result Page
 - takes a query from a page leading into it
 - executes query and displays results
 - has one button leading back to main page
