@@ -16,6 +16,8 @@ public class Main {
     public static void main(String args[]) {
               
         ConnectToMySQL.runConnection();
+        ConnectToMySQL.testQueryConnection();
+        ConnectToMySQL.closeConnection();
         main_runner.setVisible(true);
     }
 }
