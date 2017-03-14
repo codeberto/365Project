@@ -83,7 +83,7 @@ public class ResultPage extends javax.swing.JFrame {
         this.dispose();
         
         // TODO: change this to setting global main page back to visible
-        new MainPage().setVisible(true);
+        Main.main_runner.setVisible(true);
         
     }//GEN-LAST:event_returnHome_buttonActionPerformed
 

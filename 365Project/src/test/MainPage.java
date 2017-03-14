@@ -72,13 +72,13 @@ public class MainPage extends javax.swing.JFrame {
 
     private void newWorkout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newWorkout_buttonActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        this.setVisible(false);
         new NewWorkoutPage().setVisible(true);
     }//GEN-LAST:event_newWorkout_buttonActionPerformed
 
     private void viewWorkouts_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewWorkouts_buttonActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        this.setVisible(false);
         new ViewWorkoutsPage().setVisible(true);
     }//GEN-LAST:event_viewWorkouts_buttonActionPerformed
 
