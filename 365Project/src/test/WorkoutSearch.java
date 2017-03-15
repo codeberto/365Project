@@ -81,7 +81,7 @@ public class WorkoutSearch {
         String fromCommand = "FROM " + TABLE_WORKOUTS;
         String whereCommand = ((!byDate && !byName && !byType && !byDuration && !byUserName)
                 ? ""
-                : "WHERE "
+                : " WHERE "
                 + (byUserName ? "username = '" + username + "'" : "")
                 + (byName? " AND name = '" + name + "'" : "")
                 + (byDuration? " AND startDuration = " + startDuration : "")
