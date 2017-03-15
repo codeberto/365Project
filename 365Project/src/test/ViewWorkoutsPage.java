@@ -5,6 +5,9 @@
  */
 package test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author cignx
@@ -49,6 +52,7 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         tf_searchDuration2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        IncorrectLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,6 +93,10 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("-");
 
+        IncorrectLabel.setForeground(new java.awt.Color(255, 0, 0));
+        IncorrectLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        IncorrectLabel.setText("   ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,9 +125,9 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(5, 5, 5)
                         .addComponent(tf_searchDuration2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(134, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(label_headerView)
@@ -128,7 +136,10 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
                         .addComponent(search_button)
                         .addGap(18, 18, 18)
                         .addComponent(cancel_button)
-                        .addGap(176, 176, 176))))
+                        .addGap(176, 176, 176))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(IncorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(120, 120, 120))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,7 +166,9 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
                     .addComponent(tf_searchDuration1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_searchDuration2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
+                .addComponent(IncorrectLabel)
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(search_button)
                     .addComponent(cancel_button))
@@ -172,11 +185,44 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
         
         // TODO: consolidate data, form query from data
         //          then pass query to result page (run query from there)
-        
-        this.dispose();
-        
-        // start up a new results page and pass query to it
-        new ResultPage().setVisible(true);
+        List<Workout> workouts=null;
+        WorkoutSearch w = new WorkoutSearch();
+        if(tf_searchName.getText().trim().isEmpty() && 
+            tf_searchDate1.getText().trim().isEmpty() && 
+                typeComboBox.getSelectedIndex()==0 && 
+                    tf_searchDuration1.getText().trim().isEmpty()){
+                        IncorrectLabel.setText("Must Enter Search");
+        }else{
+            try{
+                if(!tf_searchDuration1.getText().trim().isEmpty()){               
+                    if(!tf_searchDuration2.getText().trim().isEmpty()){
+                        w.byDuration(Integer.parseInt(tf_searchDuration1.getText().trim()),Integer.parseInt(tf_searchDuration2.getText().trim()));                       
+                    }else{
+                        w.byDuration(Integer.parseInt(tf_searchDuration1.getText().trim()));   
+                    }
+
+                }
+                if(!tf_searchName.getText().trim().isEmpty()){
+                    w.byName(tf_searchName.getText().trim());
+                }
+                if(!tf_searchDate1.getText().trim().isEmpty()){
+                    if(!tf_searchDate2.getText().trim().isEmpty()){
+                         w.byDate(tf_searchDate1.getText().trim(),tf_searchDate2.getText().trim());
+                    }else{
+                        w.byDate(tf_searchDate1.getText().trim());
+                    }
+                }
+                if(typeComboBox.getSelectedIndex()!=0){
+                    w.byType((String)typeComboBox.getSelectedItem());
+                }
+                workouts=w.getWorkouts();
+                new ResultPage(workouts).setVisible(true);
+                this.dispose();
+            }catch(NumberFormatException e){
+                IncorrectLabel.setText("Duration must be numbers");
+
+            }
+        }
         
     }//GEN-LAST:event_search_buttonActionPerformed
 
@@ -228,6 +274,7 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel IncorrectLabel;
     private javax.swing.JButton cancel_button;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

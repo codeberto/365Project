@@ -20,7 +20,7 @@ public class Main {
         for (Workout w : workouts) {
             System.out.println(w.dateWorked + ": " + w.duration + " minutes");
         }*/
-        ConnectToMySQL.closeConnection();
+        //ConnectToMySQL.closeConnection();
         
     }
 }
