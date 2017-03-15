@@ -1,6 +1,5 @@
 package test;
 
-import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -13,7 +12,7 @@ import static test.Constants.TABLE_WORKOUTS;
 public class Queries {
 
     public static boolean insertWorkout(String type, String date, int duration) {
-        String command = "INSERT INTO " + TABLE_WORKOUTS + " (username, dateWorked, woType, duration) VALUES ('"
+        String command = "INSERT INTO " + TABLE_WORKOUTS + " (username, dateWorked, woType, startDuration) VALUES ('"
                + Main.CURRENT_USER + "', '" + date + "'" + ", " + "'" + type + "'" + ", " + duration + ")";
 
         return ConnectToMySQL.sendInsertStatement(command) != null;
@@ -104,9 +103,6 @@ public class Queries {
         return users;
     }
 
-
-
-
     public static List<Workout> getWorkoutByType(String type) {
         List<Workout> workouts = new ArrayList<>();
         String command = "SELECT * FROM " + TABLE_WORKOUTS + " WHERE username = '" + Main.CURRENT_USER
@@ -123,7 +119,7 @@ public class Queries {
                             .setUsername(rs.getString("username"))
                             .setWoType(rs.getString("woType"))
                             .setDateWorked(rs.getDate("dateWorked").toString())
-                            .setDuration(rs.getInt("duration"));
+                            .setDuration(rs.getInt("startDuration"));
                     workouts.add(workout);
                 }
             } else {
@@ -152,7 +148,7 @@ public class Queries {
                             .setUsername(rs.getString("username"))
                             .setType(rs.getString("woType"))
                             .setDateWorked(rs.getDate("dateWorked").toString())
-                            .setDuration(rs.getInt("duration"));
+                            .setDuration(rs.getInt("startDuration"));
                     workouts.add(workout);
                 }
             } else {
@@ -163,5 +159,104 @@ public class Queries {
         }
 
         return workouts;
+    }
+
+
+    public class WorkoutSearch {
+        boolean byType, byDate, byDuration, byUserName, byName;
+        String type, startDate, endDate, username, name;
+        int startDuration, endDuration;
+
+        public WorkoutSearch() {
+            byType = false;
+            byDate = false;
+            byDuration = false;
+            byUserName = true;
+            byName = false;
+
+            username = Main.CURRENT_USER;
+        }
+
+        public WorkoutSearch byType(String type) {
+            this.byType = true;
+            this.type = type;
+            return this;
+        }
+
+        public WorkoutSearch byDate(String date) {
+            this.startDate = date;
+            this.endDate = date;
+            this.byDate = true;
+            return this;
+        }
+
+        public WorkoutSearch byDate(String startDate, String endDate) {
+            this.startDate = startDate;
+            this.endDate = endDate;
+            this.byDate = true;
+            return this;
+        }
+
+        public WorkoutSearch byDuration(int duration) {
+            this.byDuration = true;
+            this.startDuration = duration;
+            this.endDuration = duration;
+            return this;
+        }
+
+        public WorkoutSearch byDuration(int startDuration, int endDuration) {
+            this.byDuration = true;
+            this.startDuration = startDuration;
+            this.endDuration = endDuration;
+            return this;
+        }
+
+        public WorkoutSearch byUsername(String username) {
+            this.byUserName = true;
+            this.username = username;
+            return this;
+        }
+
+        public WorkoutSearch byName(String name) {
+            this.byName = true;
+            this.name = name;
+            return this;
+        }
+
+        public WorkoutSearch searchAllUsers(boolean allUsers) {
+            byUserName = false;
+            username = null;
+            return this;
+        }
+
+        List<Workout> getWorkouts() {
+            List<Workout> workouts = new ArrayList<>();
+            String selectCommand = "SELECT * ";
+            String fromCommand = "FROM " + TABLE_WORKOUTS;
+            String whereCommand = ((!byDate && !byName && !byType && !byDuration && !byUserName)
+                    ? ""
+                    : "WHERE "
+                        + (byUserName ? "username = '" + username + "'" : "")
+                        + (byName? " AND name = '" + name + "'" : "")
+                        + (byDuration? " AND startDuration = " + startDuration : "")
+                        + (byDate? " AND dateWorked >= " + startDate + " AND dateWorked <= " + endDate : "")
+                        + (byType? " AND type = " + type : ""));
+
+            String orderByCommand;
+
+            String command = selectCommand + fromCommand + whereCommand;
+            try {
+                Statement statement = ConnectToMySQL.sendSelectStatement(selectCommand + fromCommand + whereCommand);
+                if (statement != null) {
+
+                } else {
+                    System.out.println("Statement returned null for getWorkours with command: " + command);
+                }
+            } catch (Exception e) {
+
+            }
+
+            return workouts;
+        }
     }
 }
