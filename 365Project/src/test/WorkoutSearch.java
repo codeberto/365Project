@@ -77,8 +77,7 @@ public class WorkoutSearch {
     }
 
     public WorkoutSearch searchAllUsers(boolean allUsers) {
-        byUserName = false;
-        username = null;
+        byUserName = !allUsers;
         return this;
     }
 
@@ -111,14 +110,33 @@ public class WorkoutSearch {
         List<Workout> workouts = new ArrayList<>();
         String selectCommand = "SELECT * ";
         String fromCommand = "FROM " + TABLE_WORKOUTS;
-        String whereCommand = ((!byDate && !byName && !byType && !byDuration && !byUserName)
-                ? ""
-                : " WHERE "
-                + (byUserName ? "username = '" + username + "'" : "")
-                + (byName? " AND name = '" + name + "'" : "")
-                + (byDuration? " AND duration >= " + startDuration  + " AND duration <= " + endDuration : "")
-                + (byDate? " AND dateWorked >= '" + startDate + "' AND dateWorked <= '" + endDate : "")
-                + (byType? " AND woType = '" + type + "'": "'"));
+        String whereCommand;
+
+        if (byDate || byName || byType || byDuration || byUserName) {
+            boolean firstQualifier = false;
+            whereCommand = " WHERE ";
+            if (byUserName) {
+                whereCommand += "username = '" + username + "'";
+                firstQualifier = true;
+            }
+            if (byName) {
+                whereCommand += (firstQualifier ? " AND " : " ") + "name = '" + name + "'";
+                firstQualifier = true;
+            }
+            if (byDate) {
+                whereCommand += (firstQualifier ? " AND " : " ") + "dateWorked >= '" + startDate + "' AND dateWorked <= '" + endDate + "'";
+                firstQualifier = true;
+            }
+            if (byDuration) {
+                whereCommand += (firstQualifier ? " AND " : " ") + "duration >= " + startDuration + " AND duration <= " + endDuration;
+                firstQualifier = true;
+            }
+            if (byType) {
+                whereCommand += (firstQualifier ? " AND " : " ") + "woType = '" + type + "'";
+            }
+        } else {
+            whereCommand = "";
+        }
 
         String orderByCommand = " ORDER BY "
                 + (orderByDate ? "dateWorked" : "")
