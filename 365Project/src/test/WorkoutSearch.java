@@ -9,10 +9,14 @@ import java.util.List;
 import static test.Constants.TABLE_WORKOUTS;
 
 public class WorkoutSearch {
-    boolean byType, byDate, byDuration, byUserName, byName;
-    boolean orderByDate, orderByDuration, orderByUserName, orderByName, orderByType;
-    String type, startDate, endDate, username, name;
-    int startDuration, endDuration;
+    public static final int ASC = 0;
+    public static final int DESC = 1;
+
+    private boolean byType, byDate, byDuration, byUserName, byName;
+    private boolean orderByDate, orderByDuration, orderByUserName, orderByName, orderByType;
+    private String type, startDate, endDate, username, name;
+    private int startDuration, endDuration;
+    private int order;
 
     public WorkoutSearch() {
         byType = false;
@@ -25,7 +29,7 @@ public class WorkoutSearch {
         orderByName = false;
         orderByUserName = true;
         orderByType = false;
-
+        order = DESC;
 
         username = Main.CURRENT_USER;
     }
@@ -70,6 +74,16 @@ public class WorkoutSearch {
         return this;
     }
 
+    public WorkoutSearch descendingOrder() {
+        this.order = DESC;
+        return this;
+    }
+
+    public WorkoutSearch ascendingOrder() {
+        this.order = ASC;
+        return this;
+    }
+
     public WorkoutSearch byName(String name) {
         this.byName = true;
         this.name = name;
@@ -81,27 +95,27 @@ public class WorkoutSearch {
         return this;
     }
 
-    public WorkoutSearch setOrderByDate(boolean orderByDate) {
+    public WorkoutSearch orderByDate(boolean orderByDate) {
         this.orderByDate = orderByDate;
         return this;
     }
 
-    public WorkoutSearch setOrderByDuration(boolean orderByDuration) {
+    public WorkoutSearch orderByDuration(boolean orderByDuration) {
         this.orderByDuration = orderByDuration;
         return this;
     }
 
-    public WorkoutSearch setOrderByUserName(boolean orderByUserName) {
+    public WorkoutSearch orderByUsername(boolean orderByUserName) {
         this.orderByUserName = orderByUserName;
         return this;
     }
 
-    public WorkoutSearch setOrderByName(boolean orderByName) {
+    public WorkoutSearch orderByName(boolean orderByName) {
         this.orderByName = orderByName;
         return this;
     }
 
-    public WorkoutSearch setOrderByType(boolean orderByType) {
+    public WorkoutSearch orderByWoType(boolean orderByType) {
         this.orderByType = orderByType;
         return this;
     }
@@ -138,14 +152,40 @@ public class WorkoutSearch {
             whereCommand = "";
         }
 
-        String orderByCommand = " ORDER BY "
-                + (orderByDate ? "dateWorked" : "")
-                + (orderByType ? "woType" : "")
-                + (orderByUserName ? "username" : "");
+        String orderCommand;
+        if (orderByDate || orderByDuration || orderByName || orderByType || orderByUserName) {
+            boolean firstOrder = false;
+            orderCommand = " ORDER BY ";
+            if (orderByDate) {
+                orderCommand += "dateWorked";
+                firstOrder = true;
+            }
+            if (orderByName) {
+                orderCommand += (firstOrder ? ", name"  : "name");
+                firstOrder = true;
+            }
+            if (orderByType) {
+                orderCommand += (firstOrder ? ", woType" : "woType");
+                firstOrder = true;
+            }
+            if (orderByUserName) {
+                orderCommand += (firstOrder ? ", username" : "username");
+                firstOrder = true;
+            }
+            if (orderByDuration) {
+                orderCommand += (firstOrder ? ", duration" : "duration");
+            }
 
-        String command = selectCommand + fromCommand + whereCommand + orderByCommand;
+            orderCommand += (order == DESC ? " DESC" : " ASC");
+        } else {
+            orderCommand = "";
+        }
+
+
+        String command = selectCommand + fromCommand + whereCommand + orderCommand;
+        System.out.println(command);
         try {
-            Statement statement = ConnectToMySQL.sendSelectStatement(selectCommand + fromCommand + whereCommand);
+            Statement statement = ConnectToMySQL.sendSelectStatement(command);
             Workout workout;
             if (statement != null) {
                 ResultSet rs = statement.getResultSet();
