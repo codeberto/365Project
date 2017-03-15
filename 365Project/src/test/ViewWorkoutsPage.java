@@ -16,6 +16,13 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
      */
     public ViewWorkoutsPage() {
         initComponents();
+        typeComboBox.removeAllItems();
+        typeComboBox.addItem("");
+        typeComboBox.addItem("Chest");
+        typeComboBox.addItem("Legs");
+        typeComboBox.addItem("Biceps");
+        typeComboBox.addItem("Back");
+        typeComboBox.addItem("Abs");
     }
 
     /**
@@ -33,11 +40,15 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
         label_type = new javax.swing.JLabel();
         label_duration = new javax.swing.JLabel();
         tf_searchName = new javax.swing.JTextField();
-        tf_searchDate = new javax.swing.JTextField();
-        cb_searchType = new javax.swing.JComboBox<>();
-        tf_searchDuration = new javax.swing.JTextField();
+        tf_searchDate1 = new javax.swing.JTextField();
+        typeComboBox = new javax.swing.JComboBox<>();
+        tf_searchDuration1 = new javax.swing.JTextField();
         search_button = new javax.swing.JButton();
         cancel_button = new javax.swing.JButton();
+        tf_searchDate2 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        tf_searchDuration2 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,13 +56,18 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
 
         label_name.setText("Name:");
 
-        label_date.setText("Date:");
+        label_date.setText("Date Range (yyyy-mm-dd):");
 
-        label_type.setText("W. O. Type:");
+        label_type.setText("Workout Type:");
 
-        label_duration.setText("Duration:");
+        label_duration.setText("Duration Range:");
 
-        cb_searchType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        typeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeComboBoxActionPerformed(evt);
+            }
+        });
 
         search_button.setText("Search");
         search_button.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +83,12 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("-");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("-");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,23 +101,34 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
                     .addComponent(label_date)
                     .addComponent(label_name))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tf_searchDate)
-                    .addComponent(tf_searchDuration)
-                    .addComponent(tf_searchName)
-                    .addComponent(cb_searchType, 0, 222, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(tf_searchName)
+                        .addComponent(typeComboBox, 0, 201, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tf_searchDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_searchDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tf_searchDuration1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel2)
+                        .addGap(5, 5, 5)
+                        .addComponent(tf_searchDuration2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(151, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(153, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(label_headerView)
-                        .addGap(145, 145, 145))
+                        .addGap(214, 214, 214))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(search_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(cancel_button)
-                        .addContainerGap())))
+                        .addGap(176, 176, 176))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,20 +142,24 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_date)
-                    .addComponent(tf_searchDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(tf_searchDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(tf_searchDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_type)
-                    .addComponent(cb_searchType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(typeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_duration)
-                    .addComponent(tf_searchDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                    .addComponent(tf_searchDuration1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_searchDuration2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(search_button)
                     .addComponent(cancel_button))
-                .addContainerGap())
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();
@@ -150,6 +187,10 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
         // TODO: change this to setting global main page back to visible
         Main.main_runner.setVisible(true);
     }//GEN-LAST:event_cancel_buttonActionPerformed
+
+    private void typeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_typeComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,15 +229,19 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancel_button;
-    private javax.swing.JComboBox<String> cb_searchType;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel label_date;
     private javax.swing.JLabel label_duration;
     private javax.swing.JLabel label_headerView;
     private javax.swing.JLabel label_name;
     private javax.swing.JLabel label_type;
     private javax.swing.JButton search_button;
-    private javax.swing.JTextField tf_searchDate;
-    private javax.swing.JTextField tf_searchDuration;
+    private javax.swing.JTextField tf_searchDate1;
+    private javax.swing.JTextField tf_searchDate2;
+    private javax.swing.JTextField tf_searchDuration1;
+    private javax.swing.JTextField tf_searchDuration2;
     private javax.swing.JTextField tf_searchName;
+    private javax.swing.JComboBox<String> typeComboBox;
     // End of variables declaration//GEN-END:variables
 }
