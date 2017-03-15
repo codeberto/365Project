@@ -84,7 +84,7 @@ public class WorkoutSearch {
                 : " WHERE "
                 + (byUserName ? "username = '" + username + "'" : "")
                 + (byName? " AND name = '" + name + "'" : "")
-                + (byDuration? " AND startDuration = " + startDuration : "")
+                + (byDuration? " AND duration >= " + startDuration  + " AND duration <= " + endDuration : "")
                 + (byDate? " AND dateWorked >= '" + startDate + "' AND dateWorked <= '" + endDate : "")
                 + (byType? " AND woType = '" + type + "'": "'"));
 
