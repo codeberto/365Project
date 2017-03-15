@@ -85,8 +85,8 @@ public class WorkoutSearch {
                 + (byUserName ? "username = '" + username + "'" : "")
                 + (byName? " AND name = '" + name + "'" : "")
                 + (byDuration? " AND startDuration = " + startDuration : "")
-                + (byDate? " AND dateWorked >= " + startDate + " AND dateWorked <= " + endDate : "")
-                + (byType? " AND woType = " + type : ""));
+                + (byDate? " AND dateWorked >= '" + startDate + "' AND dateWorked <= '" + endDate : "")
+                + (byType? " AND woType = '" + type + "'": "'"));
 
         String orderByCommand = "";
 

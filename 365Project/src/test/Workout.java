@@ -30,4 +30,9 @@ public class Workout {
         this.username = username;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return id + " " + username + " " + dateWorked + " " + woType + " " + duration;
+    }
 }
