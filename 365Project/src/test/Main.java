@@ -12,13 +12,14 @@ public class Main {
         ConnectToMySQL.runConnection();
         ConnectToMySQL.createTables();
         landing = new LandingPage();
-        main_runner= new MainPage();
-        main_runner.setVisible(true);
-        
+        landing.setVisible(true);
+        //main_runner= new MainPage();
+        //main_runner.setVisible(true);
+        /*
         List<Workout> workouts = Queries.getWorkoutByDate("2017-03-12", "2017-03-13");
         for (Workout w : workouts) {
             System.out.println(w.dateWorked + ": " + w.duration + " minutes");
-        }
+        }*/
         ConnectToMySQL.closeConnection();
         
     }
