@@ -1,5 +1,6 @@
 package test;
 
+import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class Queries {
         return ConnectToMySQL.sendInsertStatement(command) != null;
     }
 
-    public static String createNewUser(String username, String password, String name, int weight, int age) {
+    public static String createNewUser(String username, String password, String name, double weight, double age) {
         String command = "INSERT INTO " + TABLE_USERS + "(username, password, name, weight, age) VALUES ("
                 + "'" + username + "', " + "'" + password + "', " + "'" + name + "', " + weight + ", " + age + ")";
 
@@ -76,6 +77,34 @@ public class Queries {
             return false;
         }
     }
+
+    public static List<User> getFriends() {
+        List<User> users = new ArrayList<>();
+        String command = "SELECT name, age FROM " + TABLE_FRIENDS + " as F, " + TABLE_USERS + " as U WHERE F.username = '"
+                + Main.CURRENT_USER + "' and F.username = U.username";
+
+        try {
+            Statement statement = ConnectToMySQL.sendSelectStatement(command);
+            if (statement != null) {
+                ResultSet rs = statement.getResultSet();
+                User user;
+                while (rs.next()) {
+                    user = new User()
+                            .setName(rs.getString("name"))
+                            .setAge(rs.getDouble("age"));
+                    users.add(user);
+                }
+            } else {
+                System.out.println("Statement returned null for getFriends... " + Main.CURRENT_USER);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return users;
+    }
+
+
 
 
     public static List<Workout> getWorkoutByType(String type) {
