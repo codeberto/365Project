@@ -5,6 +5,8 @@
  */
 package test;
 
+import org.jdatepicker.impl.*;
+
 /**
  *
  * @author cignx
@@ -16,6 +18,13 @@ public class NewWorkoutPage extends javax.swing.JFrame {
      */
     public NewWorkoutPage() {
         initComponents();
+        typeComboBox.removeAllItems();
+        typeComboBox.addItem("Chest");
+        typeComboBox.addItem("Legs");
+        typeComboBox.addItem("Biceps");
+        typeComboBox.addItem("Back");
+        typeComboBox.addItem("Abs");
+        
     }
 
     /**
@@ -27,31 +36,34 @@ public class NewWorkoutPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSeparator1 = new javax.swing.JSeparator();
         label_headerNew = new javax.swing.JLabel();
-        label_name = new javax.swing.JLabel();
         label_date = new javax.swing.JLabel();
         label_type = new javax.swing.JLabel();
         label_duration = new javax.swing.JLabel();
-        tf_name = new javax.swing.JTextField();
-        tf_date = new javax.swing.JTextField();
-        cb_type = new javax.swing.JComboBox<>();
-        tf_duration = new javax.swing.JTextField();
+        DateTextField = new javax.swing.JTextField();
+        typeComboBox = new javax.swing.JComboBox<>();
+        DurationTextField = new javax.swing.JTextField();
         submit_button = new javax.swing.JButton();
         cancel_button = new javax.swing.JButton();
+        IncorrectLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         label_headerNew.setText("New Workout");
 
-        label_name.setText("Name:");
+        label_date.setText("Date (yyyy-mm-dd):");
 
-        label_date.setText("Date:");
+        label_type.setText("Type:");
 
-        label_type.setText("W.O. Type:");
+        label_duration.setText("Duration (minutes):");
 
-        label_duration.setText("Duration:");
-
-        cb_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        typeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeComboBoxActionPerformed(evt);
+            }
+        });
 
         submit_button.setText("Submit");
         submit_button.addActionListener(new java.awt.event.ActionListener() {
@@ -67,66 +79,67 @@ public class NewWorkoutPage extends javax.swing.JFrame {
             }
         });
 
+        IncorrectLabel.setForeground(new java.awt.Color(255, 0, 0));
+        IncorrectLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        IncorrectLabel.setText("   ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(label_headerNew)
+                        .addGap(152, 152, 152))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(submit_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cancel_button)
+                        .addGap(115, 115, 115))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(IncorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(label_date)
                             .addComponent(label_type)
                             .addComponent(label_duration))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_date)
-                            .addComponent(tf_duration)
-                            .addComponent(cb_type, 0, 222, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(label_name)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_name, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(DateTextField)
+                            .addComponent(DurationTextField)
+                            .addComponent(typeComboBox, 0, 181, Short.MAX_VALUE))))
                 .addGap(57, 57, 57))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(submit_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cancel_button)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(label_headerNew)
-                        .addGap(148, 148, 148))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(28, 28, 28)
                 .addComponent(label_headerNew)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label_name))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_date)
-                    .addComponent(tf_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_type)
-                    .addComponent(cb_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(typeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_duration)
-                    .addComponent(tf_duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(DurationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(IncorrectLabel)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submit_button)
                     .addComponent(cancel_button))
-                .addGap(14, 14, 14))
+                .addContainerGap())
         );
 
         pack();
@@ -145,15 +158,32 @@ public class NewWorkoutPage extends javax.swing.JFrame {
     private void submit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit_buttonActionPerformed
         
         // TODO: consolidate data from text fields and add entry to database
-        // get rid of window
-        this.dispose();
+        if(DateTextField.getText().trim().isEmpty()){
+            IncorrectLabel.setText("Must Have Date");
+        }else if(DurationTextField.getText().trim().isEmpty()){
+            IncorrectLabel.setText("Must Have Duration");
+        }else{
+            try{
+                if(Queries.insertWorkout((String)typeComboBox.getSelectedItem(), DateTextField.getText().trim(), Integer.parseInt(DurationTextField.getText().trim()))){
+                    IncorrectLabel.setText("Incorrect Date Format");
+                }
+                Main.main_runner= new MainPage();
+                Main.main_runner.setVisible(true);
+                this.dispose();
+            }catch(NumberFormatException e){
+                IncorrectLabel.setText("Duration must be a number");
+            }
+        }
         
         // TODO: create query using only 'name' field
         // open new results page and pass query to it
         // sort results by most recent date first
-        new ResultPage().setVisible(true);
         
     }//GEN-LAST:event_submit_buttonActionPerformed
+
+    private void typeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_typeComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,16 +221,16 @@ public class NewWorkoutPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField DateTextField;
+    private javax.swing.JTextField DurationTextField;
+    private javax.swing.JLabel IncorrectLabel;
     private javax.swing.JButton cancel_button;
-    private javax.swing.JComboBox<String> cb_type;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel label_date;
     private javax.swing.JLabel label_duration;
     private javax.swing.JLabel label_headerNew;
-    private javax.swing.JLabel label_name;
     private javax.swing.JLabel label_type;
     private javax.swing.JButton submit_button;
-    private javax.swing.JTextField tf_date;
-    private javax.swing.JTextField tf_duration;
-    private javax.swing.JTextField tf_name;
+    private javax.swing.JComboBox<String> typeComboBox;
     // End of variables declaration//GEN-END:variables
 }

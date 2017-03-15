@@ -27,11 +27,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="UsernameLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="UsernameTextField" min="-2" pref="112" max="-2" attributes="0"/>
+                              <Component id="UsernameTextField" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -42,10 +42,10 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="NameTextField" min="-2" pref="112" max="-2" attributes="0"/>
                                   <Component id="PasswordField" min="-2" pref="112" max="-2" attributes="0"/>
-                                  <Component id="AgeTextField" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
-                                  <Component id="WeightTextField" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
+                                  <Component id="AgeTextField" max="32767" attributes="0"/>
+                                  <Component id="NameTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="WeightTextField" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -54,8 +54,12 @@
                       <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
                       <Component id="CreateUserButton" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                      <Component id="IncorrectLabel" min="-2" pref="276" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="126" max="32767" attributes="0"/>
+              <EmptySpace pref="62" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,7 +68,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="UsernameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="UsernameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -79,35 +83,28 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="AgeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="AgeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AgeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="WeightTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="WeightLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="WeightTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+              <Component id="IncorrectLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="CreateUserButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="49" max="32767" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="UsernameLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Username:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="UsernameTextField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UsernameTextFieldActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JPasswordField" name="PasswordField">
       <Properties>
@@ -132,33 +129,6 @@
         <Property name="text" type="java.lang.String" value="Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="NameTextField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NameTextFieldActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="AgeTextField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgeTextFieldActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="WeightTextField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="WeightTextFieldActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JLabel" name="AgeLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Age:"/>
@@ -168,6 +138,26 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Weight:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="IncorrectLabel">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="   "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="UsernameTextField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UsernameTextFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="NameTextField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="AgeTextField">
+    </Component>
+    <Component class="javax.swing.JTextField" name="WeightTextField">
     </Component>
   </SubComponents>
 </Form>
