@@ -12,7 +12,7 @@ import static test.Constants.TABLE_WORKOUTS;
 public class Queries {
 
     public static boolean insertWorkout(String type, String date, int duration) {
-        String command = "INSERT INTO " + TABLE_WORKOUTS + " (username, dateWorked, woType, startDuration) VALUES ('"
+        String command = "INSERT INTO " + TABLE_WORKOUTS + " (username, dateWorked, woType, duration) VALUES ('"
                + Main.CURRENT_USER + "', '" + date + "'" + ", " + "'" + type + "'" + ", " + duration + ")";
 
         return ConnectToMySQL.sendInsertStatement(command) != null;
