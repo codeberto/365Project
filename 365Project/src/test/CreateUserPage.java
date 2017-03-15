@@ -27,27 +27,22 @@ public class CreateUserPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        javax.swing.JFormattedTextField UsernameTextField = new javax.swing.JFormattedTextField();
+        UsernameLabel = new javax.swing.JLabel();
         PasswordField = new javax.swing.JPasswordField();
         PasswordLabel = new javax.swing.JLabel();
         CreateUserButton = new javax.swing.JButton();
         NameLabel = new javax.swing.JLabel();
-        javax.swing.JFormattedTextField NameTextField = new javax.swing.JFormattedTextField();
-        javax.swing.JFormattedTextField AgeTextField = new javax.swing.JFormattedTextField();
-        javax.swing.JFormattedTextField WeightTextField = new javax.swing.JFormattedTextField();
         AgeLabel = new javax.swing.JLabel();
         WeightLabel = new javax.swing.JLabel();
+        IncorrectLabel = new javax.swing.JLabel();
+        UsernameTextField = new javax.swing.JTextField();
+        NameTextField = new javax.swing.JTextField();
+        AgeTextField = new javax.swing.JTextField();
+        WeightTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Username:");
-
-        UsernameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsernameTextFieldActionPerformed(evt);
-            }
-        });
+        UsernameLabel.setText("Username:");
 
         PasswordField.setToolTipText("");
 
@@ -62,27 +57,19 @@ public class CreateUserPage extends javax.swing.JFrame {
 
         NameLabel.setText("Name:");
 
-        NameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NameTextFieldActionPerformed(evt);
-            }
-        });
-
-        AgeTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgeTextFieldActionPerformed(evt);
-            }
-        });
-
-        WeightTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                WeightTextFieldActionPerformed(evt);
-            }
-        });
-
         AgeLabel.setText("Age:");
 
         WeightLabel.setText("Weight:");
+
+        IncorrectLabel.setForeground(new java.awt.Color(255, 0, 0));
+        IncorrectLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        IncorrectLabel.setText("   ");
+
+        UsernameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UsernameTextFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,11 +79,11 @@ public class CreateUserPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(100, 100, 100)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(UsernameLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(UsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(UsernameTextField))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(PasswordLabel)
@@ -105,21 +92,24 @@ public class CreateUserPage extends javax.swing.JFrame {
                                     .addComponent(AgeLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(AgeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(WeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(AgeTextField)
+                                    .addComponent(NameTextField)
+                                    .addComponent(WeightTextField)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(145, 145, 145)
-                        .addComponent(CreateUserButton)))
-                .addContainerGap(126, Short.MAX_VALUE))
+                        .addComponent(CreateUserButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(IncorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(UsernameLabel)
                     .addComponent(UsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -131,39 +121,51 @@ public class CreateUserPage extends javax.swing.JFrame {
                     .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AgeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AgeLabel))
+                    .addComponent(AgeLabel)
+                    .addComponent(AgeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(WeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(WeightLabel))
-                .addGap(26, 26, 26)
+                    .addComponent(WeightLabel)
+                    .addComponent(WeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addComponent(IncorrectLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CreateUserButton)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void CreateUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateUserButtonActionPerformed
+        if(UsernameTextField.getText().trim().isEmpty()){
+            IncorrectLabel.setText("Must Have Username");
+        }else if((new String(PasswordField.getPassword())).trim().isEmpty()){
+            IncorrectLabel.setText("Must Have Password");
+        }else if(NameTextField.getText().trim().isEmpty()){
+            IncorrectLabel.setText("Must Have Name");
+        }else{
+            try{
+                if((Main.CURRENT_USER=
+                        Queries.createNewUser(UsernameTextField.getText().trim(),
+                                (new String(PasswordField.getPassword())).trim(),
+                                NameTextField.getText().trim(), 
+                                Double.parseDouble(WeightTextField.getText().trim()),
+                                Integer.parseInt(AgeTextField.getText().trim())))==null){
+                    IncorrectLabel.setText("Incorrect Username or Password");
+                }
+                Main.main_runner= new MainPage();
+                Main.main_runner.setVisible(true);
+                this.dispose();
+            }catch(NumberFormatException e){
+                IncorrectLabel.setText("Weight and Age must be numbers");
+            }
+        }
+    }//GEN-LAST:event_CreateUserButtonActionPerformed
+
     private void UsernameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UsernameTextFieldActionPerformed
-
-    private void CreateUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateUserButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CreateUserButtonActionPerformed
-
-    private void NameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NameTextFieldActionPerformed
-
-    private void AgeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgeTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AgeTextFieldActionPerformed
-
-    private void WeightTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WeightTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_WeightTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,11 +205,16 @@ public class CreateUserPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AgeLabel;
+    private javax.swing.JTextField AgeTextField;
     private javax.swing.JButton CreateUserButton;
+    private javax.swing.JLabel IncorrectLabel;
     private javax.swing.JLabel NameLabel;
+    private javax.swing.JTextField NameTextField;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JLabel PasswordLabel;
+    private javax.swing.JLabel UsernameLabel;
+    private javax.swing.JTextField UsernameTextField;
     private javax.swing.JLabel WeightLabel;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField WeightTextField;
     // End of variables declaration//GEN-END:variables
 }
