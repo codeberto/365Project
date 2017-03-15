@@ -18,7 +18,7 @@ public class Queries {
         return ConnectToMySQL.sendInsertStatement(command) != null;
     }
 
-    public static String createNewUser(String username, String password, String name, double weight, int age) {
+    public static String createNewUser(String username, String password, String name, int weight, int age) {
         String command = "INSERT INTO " + TABLE_USERS + "(username, password, name, weight, age) VALUES ("
                 + "'" + username + "', " + "'" + password + "', " + "'" + name + "', " + weight + ", " + age + ")";
 
