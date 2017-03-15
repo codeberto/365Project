@@ -9,12 +9,17 @@ import java.sql.*;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
+import java.util.ArrayList;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class ConnectToMySQL {          
+public class ConnectToMySQL {
+    
+    
     static Connection connect;
-    static final String strSshPassword = "YOUR_CAL_POLY_PASSWORD";                      // SSH login password
-    static final String strSshUser = "YOUR_CAL_POLY_USERNAME";                                // SSH loging username
+    static final String strSshPassword = "PTmsK22!";                      // SSH login password
+    static final String strSshUser = "mjgoodwi";                                // SSH loging username
     
     private static void doSshTunnel(String strSshUser, String strSshPassword, String strSshHost, int nSshPort,
             String strRemoteHost, int nLocalPort, int nRemotePort) throws JSchException {
@@ -53,6 +58,35 @@ public class ConnectToMySQL {
         }
        
     }
+    
+    public static void createTables(){
+        try {
+            Statement statement = connect.createStatement();
+            statement.execute("CREATE TABLE IF NOT EXISTS Users(id integer auto_increment, name varchar(30) not null, weight integer, age integer, primary key(id));");
+            statement.close();
+            connect.commit();
+            
+            statement = connect.createStatement();
+            statement.execute("CREATE TABLE IF NOT EXISTS Workouts(id integer auto_increment, userID integer not null, dateWorked date, woType varchar(30), duration integer, foreign key(userID) references Users(id), primary key(id));");
+            statement.close();
+            connect.commit();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectToMySQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    /*
+    CREATE TABLE IF NOT EXISTS Users(
+        CREATE TABLE IF NOT EXISTS Users(
+	id integer auto_increment,
+        name varchar(30) not null,
+        weight integer,
+        age integer,
+        primary key(id)
+    );
+    
+*/
+    
 
     public static void testQueryConnection(){
         ResultSet rs;
@@ -72,10 +106,6 @@ public class ConnectToMySQL {
         } catch (Exception e) {
              System.out.println("query prob: " + e.getMessage());
         }
-
-
-
-
     }
 
     public void testInsertConnection(){
