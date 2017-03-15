@@ -10,6 +10,7 @@ import static test.Constants.TABLE_WORKOUTS;
 
 public class WorkoutSearch {
     boolean byType, byDate, byDuration, byUserName, byName;
+    boolean orderByDate, orderByDuration, orderByUserName, orderByName, orderByType;
     String type, startDate, endDate, username, name;
     int startDuration, endDuration;
 
@@ -19,6 +20,12 @@ public class WorkoutSearch {
         byDuration = false;
         byUserName = true;
         byName = false;
+        orderByDate = false;
+        orderByDuration = false;
+        orderByName = false;
+        orderByUserName = true;
+        orderByType = false;
+
 
         username = Main.CURRENT_USER;
     }
@@ -75,6 +82,31 @@ public class WorkoutSearch {
         return this;
     }
 
+    public WorkoutSearch setOrderByDate(boolean orderByDate) {
+        this.orderByDate = orderByDate;
+        return this;
+    }
+
+    public WorkoutSearch setOrderByDuration(boolean orderByDuration) {
+        this.orderByDuration = orderByDuration;
+        return this;
+    }
+
+    public WorkoutSearch setOrderByUserName(boolean orderByUserName) {
+        this.orderByUserName = orderByUserName;
+        return this;
+    }
+
+    public WorkoutSearch setOrderByName(boolean orderByName) {
+        this.orderByName = orderByName;
+        return this;
+    }
+
+    public WorkoutSearch setOrderByType(boolean orderByType) {
+        this.orderByType = orderByType;
+        return this;
+    }
+
     List<Workout> getWorkouts() {
         List<Workout> workouts = new ArrayList<>();
         String selectCommand = "SELECT * ";
@@ -84,11 +116,14 @@ public class WorkoutSearch {
                 : " WHERE "
                 + (byUserName ? "username = '" + username + "'" : "")
                 + (byName? " AND name = '" + name + "'" : "")
-                + (byDuration? " AND startDuration = " + startDuration : "")
+                + (byDuration? " AND duration >= " + startDuration  + " AND duration <= " + endDuration : "")
                 + (byDate? " AND dateWorked >= '" + startDate + "' AND dateWorked <= '" + endDate : "")
                 + (byType? " AND woType = '" + type + "'": "'"));
 
-        String orderByCommand = "";
+        String orderByCommand = " ORDER BY "
+                + (orderByDate ? "dateWorked" : "")
+                + (orderByType ? "woType" : "")
+                + (orderByUserName ? "username" : "");
 
         String command = selectCommand + fromCommand + whereCommand + orderByCommand;
         try {
