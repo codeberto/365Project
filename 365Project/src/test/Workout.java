@@ -2,7 +2,7 @@ package test;
 
 public class Workout {
     int duration, id;
-    String type, dateWorked, woType, username;
+    String dateWorked, woType, username;
 
     public Workout() {}
 
@@ -13,11 +13,6 @@ public class Workout {
 
     public Workout setId(int id) {
         this.id = id;
-        return this;
-    }
-
-    public Workout setType(String type) {
-        this.type = type;
         return this;
     }
 
