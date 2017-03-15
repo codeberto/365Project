@@ -153,10 +153,11 @@ public class CreateUserPage extends javax.swing.JFrame {
                                 Double.parseDouble(WeightTextField.getText().trim()),
                                 Integer.parseInt(AgeTextField.getText().trim())))==null){
                     IncorrectLabel.setText("Incorrect Username or Password");
+                }else{
+                    Main.main_runner= new MainPage();
+                    Main.main_runner.setVisible(true);
+                    this.dispose();
                 }
-                Main.main_runner= new MainPage();
-                Main.main_runner.setVisible(true);
-                this.dispose();
             }catch(NumberFormatException e){
                 IncorrectLabel.setText("Weight and Age must be numbers");
             }
