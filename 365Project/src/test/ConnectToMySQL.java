@@ -21,8 +21,8 @@ public class ConnectToMySQL {
     
     
     static Connection connect;
-    static final String strSshPassword = "PTmsK22!";                  // SSH login password
-    static final String strSshUser = "mjgoodwi";                                   // SSH loging username
+    static final String strSshPassword = "";                  // SSH login password
+    static final String strSshUser = "";                                   // SSH loging username
     
     private static void doSshTunnel(String strSshUser, String strSshPassword, String strSshHost, int nSshPort,
             String strRemoteHost, int nLocalPort, int nRemotePort) throws JSchException {
