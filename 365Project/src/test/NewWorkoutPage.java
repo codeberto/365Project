@@ -145,7 +145,6 @@ public class NewWorkoutPage extends javax.swing.JFrame {
     private void submit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit_buttonActionPerformed
         
         // TODO: consolidate data from text fields and add entry to database
-        
         // get rid of window
         this.dispose();
         
