@@ -11,13 +11,16 @@ package test;
  */
 public class Main {
     
-    static MainPage main_runner = new MainPage();
+    static MainPage main_runner;
     
     public static void main(String args[]) {
               
         ConnectToMySQL.runConnection();
-        ConnectToMySQL.testQueryConnection();
-        ConnectToMySQL.closeConnection();
+        ConnectToMySQL.createTables();
+        main_runner= new MainPage();
         main_runner.setVisible(true);
+        //ConnectToMySQL.testQueryConnection();
+        ConnectToMySQL.closeConnection();
+        
     }
 }
