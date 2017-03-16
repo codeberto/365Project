@@ -19,6 +19,8 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
      */
     public ViewWorkoutsPage() {
         initComponents();
+        setLocationRelativeTo(null);
+        
         typeComboBox.removeAllItems();
         typeComboBox.addItem("");
         typeComboBox.addItem("Chest");
@@ -56,16 +58,26 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        label_headerView.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         label_headerView.setText("Search Criteria");
 
+        label_name.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         label_name.setText("Name:");
 
+        label_date.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         label_date.setText("Date Range (yyyy-mm-dd):");
 
+        label_type.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         label_type.setText("Workout Type:");
 
+        label_duration.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         label_duration.setText("Duration Range:");
 
+        tf_searchName.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+
+        tf_searchDate1.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+
+        typeComboBox.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         typeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +85,9 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
             }
         });
 
+        tf_searchDuration1.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+
+        search_button.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         search_button.setText("Search");
         search_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +95,7 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
             }
         });
 
+        cancel_button.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         cancel_button.setText("Cancel");
         cancel_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,12 +103,17 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        tf_searchDate2.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         jLabel1.setText("-");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        tf_searchDuration2.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         jLabel2.setText("-");
 
+        IncorrectLabel.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         IncorrectLabel.setForeground(new java.awt.Color(255, 0, 0));
         IncorrectLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         IncorrectLabel.setText("   ");
@@ -103,50 +124,51 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label_duration)
-                    .addComponent(label_type)
-                    .addComponent(label_date)
-                    .addComponent(label_name))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(tf_searchName)
-                        .addComponent(typeComboBox, 0, 201, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(tf_searchDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label_duration)
+                            .addComponent(label_type)
+                            .addComponent(label_date)
+                            .addComponent(label_name))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_searchDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tf_searchDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tf_searchDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tf_searchDuration1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tf_searchDuration2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(typeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tf_searchName)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(tf_searchDuration1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel2)
-                        .addGap(5, 5, 5)
-                        .addComponent(tf_searchDuration2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(196, 196, 196)
+                        .addComponent(label_headerView)))
+                .addContainerGap(90, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(134, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(label_headerView)
-                        .addGap(214, 214, 214))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(search_button)
                         .addGap(18, 18, 18)
                         .addComponent(cancel_button)
-                        .addGap(176, 176, 176))
+                        .addGap(52, 52, 52))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(IncorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(120, 120, 120))))
+                        .addGap(174, 174, 174))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(23, 23, 23)
                 .addComponent(label_headerView)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_name)
                     .addComponent(tf_searchName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -168,11 +190,11 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addComponent(IncorrectLabel)
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(search_button)
-                    .addComponent(cancel_button))
-                .addContainerGap(54, Short.MAX_VALUE))
+                    .addComponent(cancel_button)
+                    .addComponent(search_button))
+                .addGap(37, 37, 37))
         );
 
         pack();

@@ -16,6 +16,7 @@ public class CreateUserPage extends javax.swing.JFrame {
      */
     public CreateUserPage() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -42,12 +43,16 @@ public class CreateUserPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        UsernameLabel.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         UsernameLabel.setText("Username:");
 
+        PasswordField.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         PasswordField.setToolTipText("");
 
+        PasswordLabel.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         PasswordLabel.setText("Password:");
 
+        CreateUserButton.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         CreateUserButton.setText("Create User");
         CreateUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,59 +60,61 @@ public class CreateUserPage extends javax.swing.JFrame {
             }
         });
 
+        NameLabel.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         NameLabel.setText("Name:");
 
+        AgeLabel.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         AgeLabel.setText("Age:");
 
+        WeightLabel.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         WeightLabel.setText("Weight:");
 
+        IncorrectLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         IncorrectLabel.setForeground(new java.awt.Color(255, 0, 0));
         IncorrectLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         IncorrectLabel.setText("   ");
 
-        UsernameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsernameTextFieldActionPerformed(evt);
-            }
-        });
+        UsernameTextField.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+
+        NameTextField.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+
+        AgeTextField.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+
+        WeightTextField.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(136, 136, 136)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PasswordLabel)
+                            .addComponent(NameLabel)
+                            .addComponent(WeightLabel)
+                            .addComponent(AgeLabel)
+                            .addComponent(UsernameLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(UsernameLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(UsernameTextField))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(PasswordLabel)
-                                    .addComponent(NameLabel)
-                                    .addComponent(WeightLabel)
-                                    .addComponent(AgeLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(AgeTextField)
-                                    .addComponent(NameTextField)
-                                    .addComponent(WeightTextField)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(CreateUserButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(IncorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                            .addComponent(UsernameTextField)
+                            .addComponent(NameTextField)
+                            .addComponent(WeightTextField)
+                            .addComponent(PasswordField)
+                            .addComponent(AgeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(CreateUserButton)
+                        .addGap(129, 129, 129))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(IncorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(158, 158, 158)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(UsernameLabel)
                     .addComponent(UsernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -127,11 +134,11 @@ public class CreateUserPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(WeightLabel)
                     .addComponent(WeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
+                .addGap(18, 18, 18)
                 .addComponent(IncorrectLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(7, 7, 7)
                 .addComponent(CreateUserButton)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         pack();
@@ -163,10 +170,6 @@ public class CreateUserPage extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_CreateUserButtonActionPerformed
-
-    private void UsernameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UsernameTextFieldActionPerformed
 
     /**
      * @param args the command line arguments

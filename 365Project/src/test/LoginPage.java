@@ -16,6 +16,7 @@ public class LoginPage extends javax.swing.JFrame {
      */
     public LoginPage() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -36,12 +37,16 @@ public class LoginPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        LoginLabel.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         LoginLabel.setText("Username:");
 
+        PasswordField.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         PasswordField.setToolTipText("");
 
+        PasswordLabel.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         PasswordLabel.setText("Password:");
 
+        LoginButton.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         LoginButton.setText("Login");
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,6 +54,9 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
 
+        LoginTextField.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+
+        IncorrectLabel.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         IncorrectLabel.setForeground(new java.awt.Color(255, 0, 0));
         IncorrectLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         IncorrectLabel.setText("   ");
@@ -62,16 +70,17 @@ public class LoginPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LoginLabel)
                     .addComponent(PasswordLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LoginButton)
-                    .addComponent(PasswordField)
-                    .addComponent(LoginTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(LoginButton)
+                        .addComponent(LoginTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(118, 118, 118))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(IncorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(182, 182, 182))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,11 +93,11 @@ public class LoginPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PasswordLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(IncorrectLabel)
                 .addGap(18, 18, 18)
+                .addComponent(IncorrectLabel)
+                .addGap(21, 21, 21)
                 .addComponent(LoginButton)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();

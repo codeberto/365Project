@@ -16,6 +16,7 @@ public class LandingPage extends javax.swing.JFrame {
      */
     public LandingPage() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -32,6 +33,7 @@ public class LandingPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        CreateUserButton.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         CreateUserButton.setText("Create User");
         CreateUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -39,6 +41,7 @@ public class LandingPage extends javax.swing.JFrame {
             }
         });
 
+        LoginButton.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         LoginButton.setText("Login");
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,20 +54,20 @@ public class LandingPage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(255, 255, 255)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(CreateUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(LoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addGap(254, 254, 254))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(148, Short.MAX_VALUE)
                 .addComponent(LoginButton)
                 .addGap(31, 31, 31)
                 .addComponent(CreateUserButton)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGap(141, 141, 141))
         );
 
         pack();

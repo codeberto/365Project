@@ -16,6 +16,7 @@ public class MainPage extends javax.swing.JFrame {
      */
     public MainPage() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -32,6 +33,7 @@ public class MainPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        newWorkout_button.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         newWorkout_button.setText("New Workout");
         newWorkout_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -39,6 +41,7 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
+        viewWorkouts_button.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         viewWorkouts_button.setText("View Workouts");
         viewWorkouts_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,16 +54,16 @@ public class MainPage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(97, 97, 97)
                 .addComponent(newWorkout_button)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addComponent(viewWorkouts_button)
-                .addGap(43, 43, 43))
+                .addGap(85, 85, 85))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(109, Short.MAX_VALUE)
+                .addContainerGap(198, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newWorkout_button)
                     .addComponent(viewWorkouts_button))

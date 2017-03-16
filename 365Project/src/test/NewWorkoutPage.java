@@ -17,6 +17,8 @@ public class NewWorkoutPage extends javax.swing.JFrame {
      */
     public NewWorkoutPage() {
         initComponents();
+        setLocationRelativeTo(null);
+        
         typeComboBox.removeAllItems();
         typeComboBox.addItem("Chest");
         typeComboBox.addItem("Legs");
@@ -49,14 +51,21 @@ public class NewWorkoutPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        label_headerNew.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         label_headerNew.setText("New Workout");
 
+        label_date.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         label_date.setText("Date (yyyy-mm-dd):");
 
+        label_type.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         label_type.setText("Type:");
 
+        label_duration.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         label_duration.setText("Duration (minutes):");
 
+        DateTextField.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+
+        typeComboBox.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         typeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,6 +73,9 @@ public class NewWorkoutPage extends javax.swing.JFrame {
             }
         });
 
+        DurationTextField.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+
+        submit_button.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         submit_button.setText("Submit");
         submit_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +83,7 @@ public class NewWorkoutPage extends javax.swing.JFrame {
             }
         });
 
+        cancel_button.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         cancel_button.setText("Cancel");
         cancel_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +91,7 @@ public class NewWorkoutPage extends javax.swing.JFrame {
             }
         });
 
+        IncorrectLabel.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         IncorrectLabel.setForeground(new java.awt.Color(255, 0, 0));
         IncorrectLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         IncorrectLabel.setText("   ");
@@ -87,21 +101,12 @@ public class NewWorkoutPage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(label_headerNew)
-                        .addGap(152, 152, 152))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(submit_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cancel_button)
-                        .addGap(115, 115, 115))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(IncorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(submit_button)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cancel_button))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -112,15 +117,23 @@ public class NewWorkoutPage extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(DateTextField)
                             .addComponent(DurationTextField)
-                            .addComponent(typeComboBox, 0, 181, Short.MAX_VALUE))))
+                            .addComponent(typeComboBox, 0, 350, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(label_headerNew)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(57, 57, 57))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addComponent(IncorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(27, 27, 27)
                 .addComponent(label_headerNew)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_date)
                     .addComponent(DateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -132,13 +145,13 @@ public class NewWorkoutPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_duration)
                     .addComponent(DurationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addComponent(IncorrectLabel)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submit_button)
-                    .addComponent(cancel_button))
-                .addContainerGap())
+                    .addComponent(cancel_button)
+                    .addComponent(submit_button))
+                .addGap(20, 20, 20))
         );
 
         pack();

@@ -21,6 +21,8 @@ public class ResultPage extends javax.swing.JFrame {
     public ResultPage(List<Workout> workouts) {
         this.workouts=workouts;
         initComponents();
+        setLocationRelativeTo(null);
+        
         DefaultTableModel model = (DefaultTableModel) Table.getModel();
         for(int i=0;i<workouts.size();i++){
             model.addRow(new Object[]{workouts.get(i).name,workouts.get(i).woType,workouts.get(i).duration,workouts.get(i).dateWorked});
@@ -45,8 +47,10 @@ public class ResultPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         jLabel1.setText("Results Page");
 
+        returnHome_button.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         returnHome_button.setText("Return to Main Page");
         returnHome_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +58,7 @@ public class ResultPage extends javax.swing.JFrame {
             }
         });
 
+        Table.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -77,6 +82,7 @@ public class ResultPage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        Table.setRowHeight(20);
         Table.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(Table);
 
@@ -87,15 +93,15 @@ public class ResultPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(returnHome_button))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(197, 197, 197)
+                        .addGap(264, 264, 264)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addGap(220, 220, 220)
+                        .addComponent(returnHome_button))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +109,7 @@ public class ResultPage extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(returnHome_button)
                 .addGap(18, 18, 18))
