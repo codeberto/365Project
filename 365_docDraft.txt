@@ -1,7 +1,22 @@
 Queries
 
+- Tables
+	- Users
+		- username
+		- password
+		- name
+		- weight
+		- age
+	- Friends
+		- username
+		- friend
+	- Workouts
+		- username
+		- dateWorked
+		- woType
+		- duration
 - Inserts
-	- new workout
+	- new workout (store in Workouts table)
 		- date (Date - "yyyy-mm-dd")
 		- type (enum - set choices)
 			- chest
@@ -10,26 +25,27 @@ Queries
 			- back
 			- abs
 		- duration (minutes - int)
-	- new user input
+	- new user input (store in Users table)
 		- unique username
 		- password
 		- name
 		- age
 		- weight
-	- new friend
+	- new friend (store in Friends table)
 		- valid existing username
+		- user's username (implicit, user doesn't need to enter this)
 - Verification
-	- login
+	- login (Query Users table to verify)
 		- valid existing username
 		- valid password
 - Retrieve Data
-	- given a constraint
+	- given a constraint (query Workouts table)
 		- get workout by type (enum, options above)
 		- get workout by date (yyyy-mm-dd) (both dates must be before or on current date)
 		- get workout by date range (yyyy-mm-dd) to (yyyy-mm-dd) (both dates must be before or on current date and 2nd date must be after first date)
 		- get workout by duration (in minutes - int)
 		- get workout by user_name
-		- get user_name by name
+		- get user_name by name (query Users table)
 
 	- combination (given a constraint)
 		- get workout using any combo of username, type, date, duration
