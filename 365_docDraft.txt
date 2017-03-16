@@ -2,26 +2,49 @@ Queries
 
 - Inserts
 	- new workout
-	- new user
+		- date (Date - "yyyy-mm-dd")
+		- type (enum - set choices)
+			- chest
+			- legs
+			- biceps
+			- back
+			- abs
+		- duration (minutes - int)
+	- new user input
+		- unique username
+		- password
+		- name
+		- age
+		- weight
 	- new friend
+		- valid existing username
 - Verification
 	- login
+		- valid existing username
+		- valid password
 - Retrieve Data
 	- given a constraint
 		- get workout by type
 		- get workout by date		(need a standard input format)
 		- get workout by date range
-		- get workout by duration
+		- get workout by rep count
+		- get workout by set count
 		- get workout by user_name 
 		- get user by name
 	- combination (given a constraint)
 		- get workout using any combo of username, type, date, duration
 		
-	- sorted data (Group by)
-		- sort workout by duration	(need a standard input format)
-		- sort workout by user
-		- sort workout by date
-		- sort workout by type
+	- sorted data (Order By)
+		- sort workout by duration (minutes)
+		- sort workout by user (username)
+		- sort workout by date (yyyy-mm-dd)
+		- sort workout by type (enum, options above)
+
+	- grouped data (Group By)
+		- get max of type of workout for each friend
+		- get max of duration of workout for each friend
+		- get number of workouts done for each friend
+		- get average duration for workout type and/or friend
 
 	- optional ideas
 		- sort by count of workouts
