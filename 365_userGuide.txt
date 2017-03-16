@@ -5,20 +5,27 @@
 	  Or open the jar by double clicking it
 
 2. Creating User:
-	- Home menu will pop up after running the jar. Click on the <> button.
-	- The screen will prompt you for your username, password, name, age, weight
-	- Once you have entered those values click on the <> button
+	- Home menu will pop up after running the jar. Click on the <Create User> button.
+	- The screen will prompt you for your username, password, name, age (must be an int), weight (must be a double)
+	- Once you have entered those values click on the <Create User> button
 	- NOTE: You must enter a unique username or else your user will be rejected
 
 3. Create New Workout:
-	- On the Main Menu click the <new workout> button
-	- The screen will prompt you for the workout name, date, duration (in minutes), 
+	- On the Main Menu click the <New Workout> button
+	- The screen will prompt you for the workout date (yyyy-mm-dd), duration (in minutes int), 
 	  and type (choose from the given list of workouts)
-	- To create the new workout click the <> button, this will add the entry to the database
-	- The app will take you to the results page showing all your workouts ordered by date
+	- To create the new workout click the <Submit> button, this will add the entry to the database
+	- Or click the <Cancel> button if you don't want to create the workout
 
 4. View Workouts:
-	- On the Main Menu click the <view workout> button
-	- The screen will prompt you for your query, click the <> button to go to the results page
+	- On the Main Menu click the <View Workout> button
+	- The screen will prompt you for your query with the following options
+		- Friend's name
+		- Date range: yyyy-mm-dd to yyyy-mm-dd
+		- Workout type
+		- Duration range (in minutes)
+	- If you leave every field blank the view page will show all your workouts
+	- If you mark the <search all users> box it will search all available users
+	- Once you are done click the <Search> button to go to the results page
 	- You will be taken to the results page to view the workouts.
-	  To go back to the main menu click the <back> button
+	- To go back to the main menu click the <Return to Main Page> button

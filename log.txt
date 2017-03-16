@@ -1,0 +1,8 @@
+Matt Goodwin:
+Matt Steinhardt:
+Ben Carter:
+Lenoy Avidan:
+	- Internal Documentation: 1 hour
+	- User Guide: 1 hour
+	- Group By SQL Queries: 2 hours
+	- Presentation: 1 hour
