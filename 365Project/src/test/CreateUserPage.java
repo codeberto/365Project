@@ -159,7 +159,7 @@ public class CreateUserPage extends javax.swing.JFrame {
                                 NameTextField.getText().trim(), 
                                 Double.parseDouble(WeightTextField.getText().trim()),
                                 Integer.parseInt(AgeTextField.getText().trim())))==null){
-                    IncorrectLabel.setText("Incorrect Username or Password");
+                    IncorrectLabel.setText("Invalid Username or Password. Please try a different one!");
                 }else{
                     Main.main_runner= new MainPage();
                     Main.main_runner.setVisible(true);
