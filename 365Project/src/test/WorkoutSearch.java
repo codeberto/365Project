@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import static test.Constants.TABLE_USERS;
 import static test.Constants.TABLE_WORKOUTS;
 
 public class WorkoutSearch {
@@ -122,34 +123,25 @@ public class WorkoutSearch {
 
     List<Workout> getWorkouts() {
         List<Workout> workouts = new ArrayList<>();
-        String selectCommand = "SELECT * ";
-        String fromCommand = "FROM " + TABLE_WORKOUTS;
+        String selectCommand = "SELECT T.id, T.username, U.name, T.dateWorked, T.woType, T.duration ";
+        String fromCommand = "FROM " + TABLE_WORKOUTS + " AS T, " + TABLE_USERS + " AS U";
         String whereCommand;
 
-        if (byDate || byName || byType || byDuration || byUserName) {
-            boolean firstQualifier = false;
-            whereCommand = " WHERE ";
-            if (byUserName) {
-                whereCommand += "username = '" + username + "'";
-                firstQualifier = true;
-            }
-            if (byName) {
-                whereCommand += (firstQualifier ? " AND " : " ") + "name = '" + name + "'";
-                firstQualifier = true;
-            }
-            if (byDate) {
-                whereCommand += (firstQualifier ? " AND " : " ") + "dateWorked >= '" + startDate + "' AND dateWorked <= '" + endDate + "'";
-                firstQualifier = true;
-            }
-            if (byDuration) {
-                whereCommand += (firstQualifier ? " AND " : " ") + "duration >= " + startDuration + " AND duration <= " + endDuration;
-                firstQualifier = true;
-            }
-            if (byType) {
-                whereCommand += (firstQualifier ? " AND " : " ") + "woType = '" + type + "'";
-            }
-        } else {
-            whereCommand = "";
+        whereCommand = " WHERE T.username = U.username";
+        if (byUserName) {
+            whereCommand += " AND " + "username = '" + username + "'";
+        }
+        if (byName) {
+            whereCommand += " AND " + "U.name = '" + name + "'";
+        }
+        if (byDate) {
+            whereCommand += " AND " + "dateWorked >= '" + startDate + "' AND dateWorked <= '" + endDate + "'";
+        }
+        if (byDuration) {
+            whereCommand += " AND " + "duration >= " + startDuration + " AND duration <= " + endDuration;
+        }
+        if (byType) {
+            whereCommand += " AND " + "woType = '" + type + "'";
         }
 
         String orderCommand;
