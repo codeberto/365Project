@@ -35,10 +35,16 @@ Queries
 		- valid existing username
 		- user's username (implicit, user doesn't need to enter this)
 - Verification
-	- login (Query Users table to verify)
+	- login (query Users table to verify)
 		- valid existing username
 		- valid password
 - Retrieve Data
+	- steps
+		- generate sql query through user selection
+		- pass sql query to database
+		- get results and pass to Workout class
+		- generate objects based on results and create table in ui
+
 	- given a constraint (query Workouts table)
 		- get workout by type (enum, options above)
 		- get workout by date (yyyy-mm-dd) (both dates must be before or on current date)
