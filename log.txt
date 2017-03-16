@@ -1,8 +1,25 @@
-Matt Goodwin:
-Matt Steinhardt:
-Ben Carter:
-Lenoy Avidan:
-	- Internal Documentation: 1 hour
-	- User Guide: 1 hour
-	- Group By SQL Queries: 2 hours
-	- Presentation: 1 hour
+Log:
+Matt Steinhardt
+ - WorkoutSearch Query Builder
+ - General Queries Class
+ - SSH tunneling to MySql Server
+ - Trigger Implementation
+ - Presentation: 1 hour
+Matt Goodwin
+ - General Queries Class
+ - Swing UI development
+ - DB result handling
+ 	- Connecting results to Swing UI
+ - Presentation: 1 hour
+Lenoy Avidan
+ - Project Feature Documentation: 1 hour
+ - Code Documentation: 1 hour
+ - Group by SQL Queries: 2 hours
+ - User Guide: 1 hour
+ - Presentation: 1 hour
+Ben Carter
+ - Error Catching: 1 hour
+ - Trigger Implementation: 2 hours
+ - Swing UI development: 2 hours
+ - Database Model Creation: 1 hour
+ - Presentation: 1 hour
