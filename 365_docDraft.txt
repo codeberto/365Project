@@ -27,10 +27,10 @@ Queries
 		- get workout by type
 		- get workout by date		(need a standard input format)
 		- get workout by date range
-		- get workout by rep count
-		- get workout by set count
+		- get workout by duration
 		- get workout by user_name 
 		- get user by name
+
 	- combination (given a constraint)
 		- get workout using any combo of username, type, date, duration
 		
@@ -41,21 +41,7 @@ Queries
 		- sort workout by type (enum, options above)
 
 	- grouped data (Group By)
-		- get max of type of workout for each friend
 		- get max of duration of workout for each friend
 		- get number of workouts done for each friend
 		- get average duration for workout type and/or friend
 
-	- optional ideas
-		- sort by count of workouts
-		- sort by number of friends
-		- sort friends by number of workouts
-
-		- get friends and sort by ...
-		- get only friends' workouts
-
-		- get max duration
-		
-		
-	
-	
