@@ -70,7 +70,7 @@ public class ResultPage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Workout Type", "Duration", "Date"
+                "Name", "Workout Type", "Duration (minutes)", "Date"
             }
         ) {
             Class[] types = new Class [] {
