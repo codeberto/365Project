@@ -56,6 +56,7 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
         tf_searchDuration2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         IncorrectLabel = new javax.swing.JLabel();
+        AllUsersCheckBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,7 +64,7 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
         label_headerView.setText("Search Criteria");
 
         label_name.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
-        label_name.setText("Name:");
+        label_name.setText("Friend's Name:");
 
         label_date.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         label_date.setText("Date Range (yyyy-mm-dd):");
@@ -119,48 +120,59 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
         IncorrectLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         IncorrectLabel.setText("   ");
 
+        AllUsersCheckBox.setText("Search All Users");
+        AllUsersCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AllUsersCheckBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(label_duration)
-                            .addComponent(label_type)
-                            .addComponent(label_date)
-                            .addComponent(label_name))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tf_searchDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tf_searchDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tf_searchDuration1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tf_searchDuration2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(typeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tf_searchName)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(196, 196, 196)
-                        .addComponent(label_headerView))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(IncorrectLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(90, 90, 90))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AllUsersCheckBox)
+                .addGap(45, 45, 45)
                 .addComponent(search_button)
                 .addGap(18, 18, 18)
                 .addComponent(cancel_button)
                 .addGap(52, 52, 52))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(label_duration)
+                                    .addComponent(label_type)
+                                    .addComponent(label_date)
+                                    .addComponent(label_name))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(tf_searchDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tf_searchDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(tf_searchDuration1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tf_searchDuration2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(typeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tf_searchName)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(196, 196, 196)
+                                .addComponent(label_headerView))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(IncorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,10 +202,15 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(IncorrectLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancel_button)
-                    .addComponent(search_button))
-                .addGap(37, 37, 37))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cancel_button)
+                            .addComponent(search_button))
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(AllUsersCheckBox)
+                        .addGap(48, 48, 48))))
         );
 
         pack();
@@ -232,6 +249,8 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
             }
             if(!tf_searchName.getText().trim().isEmpty()){
                 w.byName(tf_searchName.getText().trim());
+            }else{
+                w.byUsername(Main.CURRENT_USER);
             }
             if(!tf_searchDate1.getText().trim().isEmpty()){
                 if(!tf_searchDate2.getText().trim().isEmpty()){
@@ -251,7 +270,10 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
             if(typeComboBox.getSelectedIndex()!=0){
                 w.byType((String)typeComboBox.getSelectedItem());
             }
-            w.searchAllUsers(true);
+            if(AllUsersCheckBox.isSelected()){
+                w.searchAllUsers(true);
+            }
+            
             workouts=w.getWorkouts();
             
             // errors for range exceptions
@@ -286,6 +308,10 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
     private void typeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_typeComboBoxActionPerformed
+
+    private void AllUsersCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllUsersCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AllUsersCheckBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -323,6 +349,7 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox AllUsersCheckBox;
     private javax.swing.JLabel IncorrectLabel;
     private javax.swing.JButton cancel_button;
     private javax.swing.JLabel jLabel1;

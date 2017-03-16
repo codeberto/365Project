@@ -129,7 +129,7 @@ public class WorkoutSearch {
 
         whereCommand = " WHERE T.username = U.username";
         if (byUserName) {
-            whereCommand += " AND " + "username = '" + username + "'";
+            whereCommand += " AND " + "T.username = '" + username + "'";
         }
         if (byName) {
             whereCommand += " AND " + "U.name = '" + name + "'";
@@ -153,7 +153,7 @@ public class WorkoutSearch {
                 firstOrder = true;
             }
             if (orderByName) {
-                orderCommand += (firstOrder ? ", name"  : "name");
+                orderCommand += (firstOrder ? ", U.name"  : "U.name");
                 firstOrder = true;
             }
             if (orderByType) {
@@ -161,7 +161,7 @@ public class WorkoutSearch {
                 firstOrder = true;
             }
             if (orderByUserName) {
-                orderCommand += (firstOrder ? ", username" : "username");
+                orderCommand += (firstOrder ? ", T.username" : "T.username");
                 firstOrder = true;
             }
             if (orderByDuration) {
