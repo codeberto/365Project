@@ -5,7 +5,6 @@
  */
 package test;
 
-import org.jdatepicker.impl.*;
 
 /**
  *
