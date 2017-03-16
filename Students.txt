@@ -23,3 +23,12 @@ Ben Carter
  - Swing UI development: 2 hours
  - Database Model Creation: 1 hour
  - Presentation: 1 hour
+
+Time Breakdown
+ - Swing Development: 16hrs
+ - Query Creation: 15hrs
+ - Trigger Creation: 4hrs
+ - Code Documention: 6hrs
+ - Query Result Handling: 8hrs
+ - Other Java Coding: 5hrs
+ - Debugging: 8hrs
