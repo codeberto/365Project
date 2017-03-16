@@ -102,10 +102,11 @@ public class LoginPage extends javax.swing.JFrame {
         }else{
             if((Main.CURRENT_USER=Queries.logIn(LoginTextField.getText().trim(), (new String(PasswordField.getPassword())).trim()))==null){
                 IncorrectLabel.setText("Incorrect Username and Password Combination");
+            }else{
+                Main.main_runner= new MainPage();
+                Main.main_runner.setVisible(true);
+                this.dispose();
             }
-            Main.main_runner= new MainPage();
-            Main.main_runner.setVisible(true);
-            this.dispose();
         }
 
     }//GEN-LAST:event_LoginButtonActionPerformed
