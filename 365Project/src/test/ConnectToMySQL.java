@@ -78,6 +78,14 @@ public class ConnectToMySQL {
             statement.execute("CREATE TABLE IF NOT EXISTS Friends(username varchar(30), friend varchar(30), foreign key(username) references Users(username), foreign key(friend) references Users(username), primary key (username, friend));");
             statement.close();
             connect.commit();
+            
+            
+            statement = connect.createStatement();
+            statement.execute("DELIMITER $$ DROP TRIGGER IF EXISTS date_ex$$ CREATE TRIGGER date_ex BEFORE INSERT ON Workouts FOR EACH ROW BEGIN"
+                    + " IF new.dateWorked > current_date() THEN signal sqlstate '45002'; END IF; END $$ DELIMITER ; ");
+            statement.close();
+            connect.commit();
+
 
 
         } catch (SQLException ex) {

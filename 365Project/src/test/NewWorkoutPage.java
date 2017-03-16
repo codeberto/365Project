@@ -168,23 +168,26 @@ public class NewWorkoutPage extends javax.swing.JFrame {
     // return to main page?
     // or go to a results page of all workouts with same 'name' value?
     private void submit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit_buttonActionPerformed
-        
-        // TODO: consolidate data from text fields and add entry to database
-        if(DateTextField.getText().trim().isEmpty()){
-            IncorrectLabel.setText("Must Have Date");
-        }else if(DurationTextField.getText().trim().isEmpty()){
-            IncorrectLabel.setText("Must Have Duration");
-        }else{
-            try{
-                if(!Queries.insertWorkout((String)typeComboBox.getSelectedItem(), DateTextField.getText().trim(), Integer.parseInt(DurationTextField.getText().trim()))){
-                    IncorrectLabel.setText("Incorrect Date Format");
+        try{
+            if(DateTextField.getText().trim().isEmpty()){
+                IncorrectLabel.setText("Must Have Date");
+            }else if(DurationTextField.getText().trim().isEmpty()){
+                IncorrectLabel.setText("Must Have Duration");
+            }else{
+                try{
+                    if(!Queries.insertWorkout((String)typeComboBox.getSelectedItem(), DateTextField.getText().trim(), Integer.parseInt(DurationTextField.getText().trim()))){
+                        IncorrectLabel.setText("Incorrect Date");
+                    }else {
+                        Main.main_runner = new MainPage();
+                        Main.main_runner.setVisible(true);
+                        this.dispose();
+                    }
+                }catch(NumberFormatException e){
+                    IncorrectLabel.setText("Duration must be a number");
                 }
-                Main.main_runner= new MainPage();
-                Main.main_runner.setVisible(true);
-                this.dispose();
-            }catch(NumberFormatException e){
-                IncorrectLabel.setText("Duration must be a number");
             }
+        }catch (Exception e){
+            IncorrectLabel.setText("Error inserting new workout");
         }
         
         // TODO: create query using only 'name' field
