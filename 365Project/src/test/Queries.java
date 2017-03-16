@@ -2,7 +2,10 @@ package test;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static test.Constants.TABLE_FRIENDS;
@@ -12,6 +15,13 @@ import static test.Constants.TABLE_WORKOUTS;
 public class Queries {
 
     public static boolean insertWorkout(String type, String date, int duration) {
+        try {
+            Date myFormat = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+            System.out.println("date: " + myFormat);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
         String command = "INSERT INTO " + TABLE_WORKOUTS + " (username, dateWorked, woType, duration) VALUES ('"
                + Main.CURRENT_USER + "', '" + date + "'" + ", " + "'" + type + "'" + ", " + duration + ")";
 
@@ -44,6 +54,7 @@ public class Queries {
         try {
             Statement statement = ConnectToMySQL.sendSelectStatement(command);
             if (statement != null && statement.getResultSet().next()) {
+                System.out.println("Logged in! " + username);
                 return statement.getResultSet().getString("username");
             } else {
                 System.out.println("No user found with username and password: " + username + ", " + password);
@@ -103,33 +114,23 @@ public class Queries {
         return users;
     }
 
-    public static List<Workout> getWorkoutByType(String type) {
-        List<Workout> workouts = new ArrayList<>();
-        String command = "SELECT * FROM " + TABLE_WORKOUTS + " WHERE username = '" + Main.CURRENT_USER
-                + "' and woType = '" + type + "' ORDER BY dateWorked DESC";
+    public static int getSum(String username, String type) {
+        String command = "SELECT SUM(duration) FROM " + TABLE_WORKOUTS + " WHERE woType = '" + type + "' AND username = '" + username + "'";
 
         try {
             Statement statement = ConnectToMySQL.sendSelectStatement(command);
             if (statement != null) {
                 ResultSet rs = statement.getResultSet();
-                Workout workout;
-                while (rs.next()) {
-                    workout = new Workout()
-                            .setId(rs.getInt("id"))
-                            .setUsername(rs.getString("username"))
-                            .setWoType(rs.getString("woType"))
-                            .setDateWorked(rs.getDate("dateWorked").toString())
-                            .setDuration(rs.getInt("startDuration"));
-                    workouts.add(workout);
-                }
+                rs.next();
+                return rs.getInt(1);
             } else {
-                System.out.println("Statement returned null for type: " + type);
+                System.out.println("Statement returned null for getSum... " + command);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return workouts;
+        return -1;
     }
 
 }

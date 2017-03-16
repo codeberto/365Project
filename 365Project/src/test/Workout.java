@@ -2,9 +2,14 @@ package test;
 
 public class Workout {
     int duration, id;
-    String dateWorked, woType, username;
+    String dateWorked, woType, username, name;
 
     public Workout() {}
+
+    public Workout setName(String name) {
+        this.name = name;
+        return this;
+    }
 
     public Workout setDuration(int duration) {
         this.duration = duration;

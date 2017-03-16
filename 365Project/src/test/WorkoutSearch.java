@@ -187,7 +187,8 @@ public class WorkoutSearch {
                             .setDuration(rs.getInt("duration"))
                             .setId(rs.getInt("id"))
                             .setWoType(rs.getString("woType"))
-                            .setUsername(rs.getString("username"));
+                            .setUsername(rs.getString("username"))
+                            .setName(rs.getString("name"));
                     workouts.add(workout);
                 }
             } else {
