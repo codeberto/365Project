@@ -6,14 +6,21 @@
 
 2. Creating User:
 	- Home menu will pop up after running the jar. Click on the <Create User> button.
-	- The screen will prompt you for your username, password, name, age (must be an int), weight (must be a double)
+	- The screen will prompt you for the following values:
+		- username (must be unique from other user's usernames)
+		- password
+		-  name
+		- age (must be an integer)
+		- weight (must be a number)
 	- Once you have entered those values click on the <Create User> button
 	- NOTE: You must enter a unique username or else your user will be rejected
 
 3. Create New Workout:
 	- On the Main Menu click the <New Workout> button
-	- The screen will prompt you for the workout date (yyyy-mm-dd), duration (in minutes int), 
-	  and type (choose from the given list of workouts)
+	- The screen will prompt you for the following workout values:
+		- date (yyyy-mm-dd)
+		- duration (in minutes, must be an integer) 
+		- type (choose from the given list of workouts)
 	- To create the new workout click the <Submit> button, this will add the entry to the database
 	- Or click the <Cancel> button if you don't want to create the workout
 
@@ -23,7 +30,7 @@
 		- Friend's name
 		- Date range: yyyy-mm-dd to yyyy-mm-dd
 		- Workout type
-		- Duration range (in minutes)
+		- Duration range (in minutes, must be an integer)
 	- If you leave every field blank the view page will show all your workouts
 	- If you mark the <search all users> box it will search all available users
 	- Once you are done click the <Search> button to go to the results page
