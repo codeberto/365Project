@@ -187,42 +187,43 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
         //          then pass query to result page (run query from there)
         List<Workout> workouts=null;
         WorkoutSearch w = new WorkoutSearch();
-        if(tf_searchName.getText().trim().isEmpty() && 
-            tf_searchDate1.getText().trim().isEmpty() && 
-                typeComboBox.getSelectedIndex()==0 && 
-                    tf_searchDuration1.getText().trim().isEmpty()){
-                        IncorrectLabel.setText("Must Enter Search");
-        }else{
-            try{
-                if(!tf_searchDuration1.getText().trim().isEmpty()){               
-                    if(!tf_searchDuration2.getText().trim().isEmpty()){
-                        w.byDuration(Integer.parseInt(tf_searchDuration1.getText().trim()),Integer.parseInt(tf_searchDuration2.getText().trim()));                       
-                    }else{
-                        w.byDuration(Integer.parseInt(tf_searchDuration1.getText().trim()));   
-                    }
-
+        
+        try{
+            if(!tf_searchDuration1.getText().trim().isEmpty()){               
+                if(!tf_searchDuration2.getText().trim().isEmpty()){
+                    w.byDuration(Integer.parseInt(tf_searchDuration1.getText().trim()),Integer.parseInt(tf_searchDuration2.getText().trim()));                       
+                }else{
+                    w.byDuration(Integer.parseInt(tf_searchDuration1.getText().trim()));   
                 }
-                if(!tf_searchName.getText().trim().isEmpty()){
-                    w.byName(tf_searchName.getText().trim());
-                }
-                if(!tf_searchDate1.getText().trim().isEmpty()){
-                    if(!tf_searchDate2.getText().trim().isEmpty()){
-                         w.byDate(tf_searchDate1.getText().trim(),tf_searchDate2.getText().trim());
-                    }else{
-                        w.byDate(tf_searchDate1.getText().trim());
-                    }
-                }
-                if(typeComboBox.getSelectedIndex()!=0){
-                    w.byType((String)typeComboBox.getSelectedItem());
-                }
-                workouts=w.getWorkouts();
-                new ResultPage(workouts).setVisible(true);
-                this.dispose();
-            }catch(NumberFormatException e){
-                IncorrectLabel.setText("Duration must be numbers");
 
             }
+            if(!tf_searchName.getText().trim().isEmpty()){
+                w.byName(tf_searchName.getText().trim());
+            }
+            if(!tf_searchDate1.getText().trim().isEmpty()){
+                if(!tf_searchDate2.getText().trim().isEmpty()){
+                     w.byDate(tf_searchDate1.getText().trim(),tf_searchDate2.getText().trim());
+                }else{
+                    w.byDate(tf_searchDate1.getText().trim());
+                }
+            }
+            if(typeComboBox.getSelectedIndex()!=0){
+                w.byType((String)typeComboBox.getSelectedItem());
+            }
+            w.searchAllUsers(true);
+            workouts=w.getWorkouts();
+            if(workouts.size()==0){
+                IncorrectLabel.setText("No Results For Search Query");
+            }else{
+                new ResultPage(workouts).setVisible(true);
+                this.dispose();
+            }             
+
+        }catch(NumberFormatException e){
+            IncorrectLabel.setText("Duration must be numbers");
+
         }
+        
         
     }//GEN-LAST:event_search_buttonActionPerformed
 
