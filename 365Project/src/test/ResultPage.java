@@ -6,6 +6,8 @@
 package test;
 
 import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,6 +29,10 @@ public class ResultPage extends javax.swing.JFrame {
         for(int i=0;i<workouts.size();i++){
             model.addRow(new Object[]{workouts.get(i).name,workouts.get(i).woType,workouts.get(i).duration,workouts.get(i).dateWorked});
         }
+        
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(JLabel.LEFT);
+        Table.getColumnModel().getColumn(2).setCellRenderer(leftRenderer);
         
         
     }
