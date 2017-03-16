@@ -6,6 +6,7 @@
 package test;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -75,7 +76,7 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
 
         tf_searchName.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
 
-        tf_searchDate1.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+        tf_searchDate1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
         typeComboBox.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -103,7 +104,7 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
             }
         });
 
-        tf_searchDate2.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+        tf_searchDate2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         jLabel1.setText("-");
@@ -113,7 +114,7 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
         jLabel2.setText("-");
 
-        IncorrectLabel.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+        IncorrectLabel.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
         IncorrectLabel.setForeground(new java.awt.Color(255, 0, 0));
         IncorrectLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         IncorrectLabel.setText("   ");
@@ -149,19 +150,17 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
                             .addComponent(tf_searchName)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(196, 196, 196)
-                        .addComponent(label_headerView)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                        .addComponent(label_headerView))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(IncorrectLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(90, 90, 90))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(search_button)
-                        .addGap(18, 18, 18)
-                        .addComponent(cancel_button)
-                        .addGap(52, 52, 52))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(IncorrectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(174, 174, 174))))
+                .addComponent(search_button)
+                .addGap(18, 18, 18)
+                .addComponent(cancel_button)
+                .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +189,7 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addComponent(IncorrectLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancel_button)
                     .addComponent(search_button))
@@ -210,10 +209,22 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
         List<Workout> workouts=null;
         WorkoutSearch w = new WorkoutSearch();
         
+        int durA, durB;
+        String dateA, dateB;
+        int errorFlag = 0;
+        
         try{
             if(!tf_searchDuration1.getText().trim().isEmpty()){               
                 if(!tf_searchDuration2.getText().trim().isEmpty()){
-                    w.byDuration(Integer.parseInt(tf_searchDuration1.getText().trim()),Integer.parseInt(tf_searchDuration2.getText().trim()));                       
+                    durA = Integer.parseInt(tf_searchDuration1.getText().trim());
+                    durB = Integer.parseInt(tf_searchDuration2.getText().trim());
+                    
+                    if(durA <= durB) {
+                        w.byDuration(durA, durB);                       
+                    } else {
+                        errorFlag = -1;
+                    }
+
                 }else{
                     w.byDuration(Integer.parseInt(tf_searchDuration1.getText().trim()));   
                 }
@@ -224,7 +235,15 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
             }
             if(!tf_searchDate1.getText().trim().isEmpty()){
                 if(!tf_searchDate2.getText().trim().isEmpty()){
-                     w.byDate(tf_searchDate1.getText().trim(),tf_searchDate2.getText().trim());
+                    dateA = tf_searchDate1.getText().trim();
+                    dateB = tf_searchDate2.getText().trim();
+                    
+                    if(dateA.compareTo(dateB) <= 0) {
+                        w.byDate(dateA,dateB);
+                    } else {
+                        errorFlag = -2;
+                    }
+                    
                 }else{
                     w.byDate(tf_searchDate1.getText().trim());
                 }
@@ -234,9 +253,16 @@ public class ViewWorkoutsPage extends javax.swing.JFrame {
             }
             w.searchAllUsers(true);
             workouts=w.getWorkouts();
-            if(workouts.size()==0){
+            
+            // errors for range exceptions
+            if (errorFlag == -1){
+                IncorrectLabel.setText("1st Duration value cannot exceed the 2nd");
+            } else if(errorFlag == -2){
+                IncorrectLabel.setText("1st Date value cannot exceed the 2nd");
+                
+            } else if(workouts.size()==0){
                 IncorrectLabel.setText("No Results For Search Query");
-            }else{
+            } else{
                 new ResultPage(workouts).setVisible(true);
                 this.dispose();
             }             
