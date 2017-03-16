@@ -23,16 +23,14 @@ public class WorkoutSearch {
         byType = false;
         byDate = false;
         byDuration = false;
-        byUserName = true;
+        byUserName = false;
         byName = false;
         orderByDate = false;
         orderByDuration = false;
         orderByName = false;
-        orderByUserName = true;
+        orderByUserName = false;
         orderByType = false;
         order = DESC;
-
-        username = Main.CURRENT_USER;
     }
 
     public WorkoutSearch byType(String type) {
