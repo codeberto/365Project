@@ -24,12 +24,12 @@ Queries
 		- valid password
 - Retrieve Data
 	- given a constraint
-		- get workout by type
-		- get workout by date		(need a standard input format)
-		- get workout by date range
-		- get workout by duration
-		- get workout by user_name 
-		- get user by name
+		- get workout by type (enum, options above)
+		- get workout by date (yyyy-mm-dd) (both dates must be before or on current date)
+		- get workout by date range (yyyy-mm-dd) to (yyyy-mm-dd) (both dates must be before or on current date and 2nd date must be after first date)
+		- get workout by duration (in minutes - int)
+		- get workout by user_name
+		- get user_name by name
 
 	- combination (given a constraint)
 		- get workout using any combo of username, type, date, duration
