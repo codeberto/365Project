@@ -3,6 +3,7 @@
 	- Run jar using following command:
 		java -jar <jar-name>
 	  Or open the jar by double clicking it
+
 2. Creating User:
 	- Home menu will pop up after running the jar. Click on the <> button.
 	- The screen will prompt you for your username, password, name, age, weight
