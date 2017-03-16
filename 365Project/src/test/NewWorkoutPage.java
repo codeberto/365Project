@@ -163,7 +163,7 @@ public class NewWorkoutPage extends javax.swing.JFrame {
             IncorrectLabel.setText("Must Have Duration");
         }else{
             try{
-                if(Queries.insertWorkout((String)typeComboBox.getSelectedItem(), DateTextField.getText().trim(), Integer.parseInt(DurationTextField.getText().trim()))){
+                if(!Queries.insertWorkout((String)typeComboBox.getSelectedItem(), DateTextField.getText().trim(), Integer.parseInt(DurationTextField.getText().trim()))){
                     IncorrectLabel.setText("Incorrect Date Format");
                 }
                 Main.main_runner= new MainPage();
